@@ -33,4 +33,5 @@ C2.Owner = P1;
 P1.cars.Add(C1);
 P1.cars.Add(C2);
 
-
+C1.Print();
+P1.Print();

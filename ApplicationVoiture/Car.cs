@@ -45,10 +45,17 @@ namespace ApplicationVoiture
         /// </summary>
         public Person Owner; 
         #endregion
-        //Fonction Print.
+        //Fonction Print qui affiche les attributs de l'objet Car.
         public void Print()
         {
-
+            Console.WriteLine($"marque: {Brand}");
+            Console.WriteLine($"la puissance de{Brand} {Model} est de: {Power}");
+            Console.WriteLine($"modèle: {Model}");
+            Console.WriteLine($"kilométrage: {KLM}");
+            Console.WriteLine($"poids: {Weight}");
+            Console.WriteLine($"mise en service: {OriginalServiceDate}");
         }
+
+        
     }
 }
