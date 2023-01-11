@@ -2,12 +2,12 @@
 using ApplicationVoiture;
 //Création d'un objet de type person.
 Person P1 = new Person();
-P1.Name = "Doe";
-P1.FirstName = "John";
+P1.SetName("Doe");
+P1.SetFirstName("John");
 
 
 
-P1.Age = 35;
+P1.SetAge(35);
 //Création de objet voiture C1:
 Car C1 = new Car();
 C1.Model = "TT";
@@ -27,11 +27,18 @@ C2.Power = 255;
 
 
 //Liaison des voitures à leur propriaire.
-C1.Owner = P1;
-C2.Owner = P1;
+C1.AjouterPropriétaire(P1);
+C2.AjouterPropriétaire(P1);
 //Ajout des objets voitures dans la liste de leur propriétaire.
-P1.cars.Add(C1);
-P1.cars.Add(C2);
+P1.AjouterVoiture(C1);
+P1.AjouterVoiture(C2);
 
-C1.Print();
+//C1.Print();
+Console.WriteLine("Affichage P1 possédant les 2 voitures : ");
+P1.Print();
+
+
+Console.WriteLine("Affichage de P1 après la suppression d'une des 2 voitures :");
+
+P1.SupprimerVoiture(C1);
 P1.Print();
