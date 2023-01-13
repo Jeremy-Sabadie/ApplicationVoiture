@@ -1,16 +1,9 @@
-﻿using System;
-using System.Buffers;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ApplicationVoiture
+﻿namespace ApplicationVoiture
 {
     /// <summary>
     /// Classe permetant de créer des cars.
     /// </summary>
-    internal class Car
+    public class Car
     {
         #region CarAttributs
         private string registration;
@@ -18,7 +11,7 @@ namespace ApplicationVoiture
         /// Attribut Model de type chaîne de charactères correspondant au modèle de lobjet Car
         /// </summary>
         private string model;
-        
+
         private string brand;
         /// <summary>
         /// Attribut de type integer des km de l'objet car.
@@ -40,7 +33,7 @@ namespace ApplicationVoiture
         /// <summary>
         /// Nom du propriétaire  de l'objet Car de type string. 
         /// </summary>
-        private Person? Owner;
+        private Person? _Owner;
 
         public string Registration { get => registration; set => registration = value; }
         public string Model { get => model; set => model = value; }
@@ -52,6 +45,7 @@ namespace ApplicationVoiture
         public int Weight { get => weight; set => weight = value; }
         public DateOnly OriginalServiceDate { get => originalServiceDate; set => originalServiceDate = value; }
         public int Power { get => power; set => power = value; }
+        internal Person? Owner { get => _Owner; private set => _Owner = value; }
         #endregion
         //Fonction Print qui affiche les attributs de l'objet Car.
         public void Print()
@@ -65,7 +59,7 @@ namespace ApplicationVoiture
         }
         public void AjouterPropriétaire(Person owner)
         {
-            this.Owner=owner;
+            this.Owner = owner;
         }
         public void SuprimerPropriétaire()
         {

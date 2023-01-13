@@ -1,13 +1,12 @@
 ﻿
 using ApplicationVoiture;
 //Création d'un objet de type person.
-Person P1 = new Person();
-P1.SetName("Doe");
-P1.SetFirstName("John");
+Person P1 = new Person("Doe", "John", 35);
 
 
 
-P1.SetAge(35);
+
+P1.Age = 35;
 //Création de objet voiture C1:
 Car C1 = new Car();
 C1.Model = "TT";
@@ -39,6 +38,7 @@ P1.Print();
 
 
 Console.WriteLine("Affichage de P1 après la suppression d'une des 2 voitures :");
+Console.WriteLine($"la moyenne des ages des propriétaires des voitures est de: {Person.Average()}");
 
 P1.SupprimerVoiture(C1);
 P1.Print();

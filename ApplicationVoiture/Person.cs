@@ -1,93 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ApplicationVoiture
+﻿namespace ApplicationVoiture
 {
     /// <summary>
     /// Classe créant un objet personne.
     /// </summary>
-    internal class Person
+    public class Person
     {
         #region personAttributs
+
+        private string _Name;
+        private string _FirstName;
+        // Propriété de classe pour une liste d'ages:
+        private static List<int> _Ages = new List<int>();
+        //Proptiété de classe pour avoir un compteur d'instance:
+        private static int instanceCount;
+        private int iD;
+
+        private int _Age;
+
+        private List<Car> Cars = new List<Car>();
         /// <summary>
         /// Attribut Name pour le nom de l'objet Person.
         /// </summary>
-        private string Name;
-        private string FirstName;
-        private int Heigth;
-        private int Weigth;
-        private int Age;
-        public List<Car> Cars = new List<Car>();
+        public string Name { get => _Name; set => _Name = value; }
+        public string FirstName { get => _FirstName; set => _FirstName = value; }
+        public int Age { get => _Age; set => _Age = value; }
+        public static int InstanceCount { get => instanceCount; private set => instanceCount = value; }
+        private static List<int> Ages { get => _Ages; set => _Ages = value; }
+
+        public Person(string name, string firstName, int age)
+        {
+            Name = name;
+            FirstName = firstName;
+            Age = age;
+            iD = instanceCount;
+            instanceCount++;
+            Ages.Add(Age);
+        }
+        //Fonction Average qui calcule la moyenne des ages de la liste contenant les attributs des propriétaires Person.
+        public static double Average()
+        {
+            //Ternaire equivalent à:
+            //if (Ages.Count > 0) { Ages.Average()=0.0d; }
+            return (Ages.Count > 0) ? Ages.Average() : 0.0d;
+        }
+
         #endregion
-        /// <summary>
-        /// Get de l'attribut Name
-        /// </summary>
-        /// <param name="Name"></param>
-        /// <returns>Nom de L'objet Person.</returns>
-        public string GetName(string Name)
-        {
-            return Name;
-        }
-        /// <summary>
-        /// Set de l'attribut Name.
-        /// </summary>
-        /// <param name="Name"></param>
-        public void SetName(string Name)
-        {
-            this.Name = Name;
-        }
-        /// <summary>
-        /// Get de l'attribut Name
-        /// </summary>
-        /// <param name="FirstName"></param>
-        /// <returns>Nom de L'objet Person.</returns>
-        public string GetFirstName(string FirstName)
-        {
-            return FirstName;
-        }
-        public void SetFirstName(string FirstName)
-        {
-            this.FirstName = FirstName;
-        }
-        /// <summary>
-        /// Get pour l'attribut Heigth de Person.
-        /// </summary>
-        /// <param name="Heigth"=></param>
-        /// <returns>Heigth</returns>
-        public string GetHeigth(string Heigth)
-        {
-            return Heigth;
-        }
-        /// <summary>
-        /// Set de l'attribut Weigth.
-        /// </summary>
-        /// <param name="Weigth"></param>
-        public void SetWeigth(int Weigth)
-        {
-            this.Weigth = Weigth;
-        }
-
-
-
-        //Get et Set pour lattribut Age.
-        public string GetAge(string Age)
-        {
-            return Age;
-        }
-        /// <summary>
-        /// Set de l'attribut Age.
-        /// </summary>
-        /// <param name="Age"></param>
-        public void SetAge(int Age)
-        {
-            this.Age = Age;
-        }
-
 
 
         //Fonction Print pour afficher les attribut de l'objet:
@@ -100,8 +57,6 @@ namespace ApplicationVoiture
 
             Console.WriteLine($"Nom:{Name}");
             Console.WriteLine($"Prénom:{FirstName}");
-            Console.WriteLine($"taille:{Heigth}");
-            Console.WriteLine($"poids:{Weigth}");
             Console.WriteLine($"age:{Age}");
             //Boucle pour afficher les éléments car  de la lise Cars.
             for (int i = 0; i < Cars.Count; i++)
@@ -111,6 +66,7 @@ namespace ApplicationVoiture
 
 
         }
+        //Fonction qui ajoute Car à la liste de voitures.
         public void AjouterVoiture(Car car)
         {
             this.Cars.Add(car);
